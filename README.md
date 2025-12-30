@@ -68,24 +68,22 @@ Backups are created in PostgreSQL custom format (`-F c`), which provides:
 - Selective restoration capabilities
 - Better performance for large databases
 
-## Restoring from Backup
+**Restore Database in pgAdmin — New Database**
+Open pgAdmin 4
+Connect to your PostgreSQL server
+Right-click Databases → Create → Database
+Name it (example: restore_test) → Save
+Right-click the new database → Restore…
+Format: Custom
+Filename: choose the .backup file
+(Optional) Under Restore Options, enable Clean before restore
+Click Restore
+Confirm tables/schemas after restore
 
-To restore a backup:
-```bash
-pg_restore -h your-host -U your-user -d your-database -F c backup_file.backup
-```
-
-## Security
-
-- Never commit your `.env` file to version control
-- The script automatically removes the password from environment variables after backup
-- Ensure backup directory has appropriate permissions
-
-## License
-
-MIT License
-
-## Author
-
-akshay300799
-script to help backing up the db hosted on azure
+**Restore Into an Existing Database**
+Right-click the database → Restore…
+Format: Custom
+Select your .backup file
+Go to Restore Options
+Enable Clean before restore
+Click Restore
